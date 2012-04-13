@@ -2,17 +2,14 @@ package me.DJdur.ColorOP.plugin;
 
 import java.util.logging.Logger;
 
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ColorOP extends JavaPlugin implements Listener {
 	
 	Logger log = Logger.getLogger("Minecraft");
+	
+	public ColorOPListener Listener = new ColorOPListener();
 	
 	@Override
 	public void onDisable() {
@@ -23,12 +20,6 @@ public class ColorOP extends JavaPlugin implements Listener {
 	public void onEnable() {
 		log.info("[ColorOP] Enabled!");
 		log.info("[ColorOP] Made by DJdur!");
-	}
-	
-	@EventHandler(priority = EventPriority.HIGHEST)
-	public void onPlayerJoin(PlayerJoinEvent e) {
-		Player p = e.getPlayer();
-		p.setDisplayName(ChatColor.RED + "[OP] " + p.getName());
-		p.setPlayerListName(ChatColor.RED + p.getName());
+		getServer().getPluginManager().registerEvents(Listener, this);
 	}
 }
