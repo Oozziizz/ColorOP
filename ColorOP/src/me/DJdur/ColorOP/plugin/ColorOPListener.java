@@ -24,7 +24,7 @@ public class ColorOPListener implements Listener {
 	public void onPlayerQuit(PlayerQuitEvent e) {
 		Player p = e.getPlayer();
 		if(p.isOp()) {
-			e.setQuitMessage(ChatColor.RED + "[OP] " + p.getName() + ChatColor.YELLOW + " joined the game.");
+			e.setQuitMessage(ChatColor.RED + "[OP] " + p.getName() + ChatColor.YELLOW + " leaved the game.");
 		}
 	}
 }
