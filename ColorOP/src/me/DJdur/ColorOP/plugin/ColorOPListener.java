@@ -12,7 +12,10 @@ public class ColorOPListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-		p.setDisplayName(ChatColor.RED + "[OP] " + p.getName());
-		p.setPlayerListName(ChatColor.RED + p.getName());
+		if(p.isOp()) {
+			p.setDisplayName(ChatColor.RED + "[OP] " + p.getName());
+			p.setPlayerListName(ChatColor.RED + p.getName());
+			e.setJoinMessage(ChatColor.RED + "[OP] " + p.getName() + ChatColor.YELLOW + " joined the game.");
+		}
 	} 
 }
