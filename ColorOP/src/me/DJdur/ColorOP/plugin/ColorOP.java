@@ -27,8 +27,8 @@ public class ColorOP extends JavaPlugin implements Listener {
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent e) {
-		Player player = e.getPlayer();
-		player.setDisplayName(ChatColor.RED + "[OP] " + player.getName());
-		player.setPlayerListName(ChatColor.RED + player.getName());
+		Player p = e.getPlayer();
+		p.setDisplayName(ChatColor.RED + "[OP] " + p.getName());
+		p.setPlayerListName(ChatColor.RED + p.getName());
 	}
 }
