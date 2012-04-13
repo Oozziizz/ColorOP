@@ -2,10 +2,9 @@ package me.DJdur.ColorOP.plugin;
 
 import java.util.logging.Logger;
 
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class ColorOP extends JavaPlugin implements Listener {
+public class ColorOP extends JavaPlugin {
 	
 	Logger log = Logger.getLogger("Minecraft");
 	

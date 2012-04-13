@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 public class ColorOPListener implements Listener {
 	
@@ -17,5 +18,13 @@ public class ColorOPListener implements Listener {
 			p.setPlayerListName(ChatColor.RED + p.getName());
 			e.setJoinMessage(ChatColor.RED + "[OP] " + p.getName() + ChatColor.YELLOW + " joined the game.");
 		}
-	} 
+	}
+	
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onPlayerQuit(PlayerQuitEvent e) {
+		Player p = e.getPlayer();
+		if(p.isOp()) {
+			e.setQuitMessage(ChatColor.RED + "[OP] " + p.getName() + ChatColor.YELLOW + " joined the game.");
+		}
+	}
 }
