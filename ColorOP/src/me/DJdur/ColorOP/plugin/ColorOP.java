@@ -20,6 +20,6 @@ public class ColorOP extends JavaPlugin implements Listener {
 	public void onEnable() {
 		log.info("[ColorOP] Enabled!");
 		log.info("[ColorOP] Made by DJdur!");
-		getServer().getPluginManager().registerEvents(Listener, this);
+		getServer().getPluginManager().registerEvents(Listener, this); 
 	}
 }

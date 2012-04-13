@@ -14,5 +14,5 @@ public class ColorOPListener implements Listener {
 		Player p = e.getPlayer();
 		p.setDisplayName(ChatColor.RED + "[OP] " + p.getName());
 		p.setPlayerListName(ChatColor.RED + p.getName());
-	}
+	} 
 }
