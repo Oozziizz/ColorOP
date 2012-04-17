@@ -24,8 +24,7 @@ public class ColorOP extends JavaPlugin {
 		log.info("[ColorOP] Enabled!");
 		log.info("[ColorOP] Made by DJdur!");
 		getServer().getPluginManager().registerEvents(Listener, this);
-		config.options().header("Welcome to ColorOP config.");
-		config.options().header("Color is the color for tag and your name, Tag is for the awesome tag before your name!");
+		config.options().header("Welcome to ColorOP config. \nColor is the color for tag and your name, Tag is for the awesome tag before your name!");
 		config.options().copyDefaults(true);
 		config.addDefault("Color", "&c");
 		config.addDefault("Tag", "[OP]");
