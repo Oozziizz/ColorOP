@@ -7,16 +7,23 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.plugin.Plugin;
 
 public class ColorOPListener implements Listener {
 	
-	@EventHandler(priority = EventPriority.HIGHEST)
+	Plugin plugin;
+	
+	public ColorOPListener(ColorOP main) {
+		plugin = main;
+	}
+	
+	@EventHandler(priority = EventPriority.HIGHEST) // kk
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		if(p.isOp()) {
-			p.setDisplayName(ChatColor.RED + "[OP] " + p.getName());
-			p.setPlayerListName(ChatColor.RED + p.getName());
-			e.setJoinMessage(ChatColor.RED + "[OP] " + p.getName() + ChatColor.YELLOW + " joined the game.");
+			p.setDisplayName(plugin.getConfig().getString("Color").replaceAll("&([0-9a-fk-or])", "\u00A7$1") + plugin.getConfig().getString("Tag") + " " + p.getName());
+			p.setPlayerListName(plugin.getConfig().getString("Color").replaceAll("&([0-9a-fk-or])", "\u00A7$1") + p.getName());
+			e.setJoinMessage(plugin.getConfig().getString("Color").replaceAll("&([0-9a-fk-or])", "\u00A7$1") + plugin.getConfig().getString("Tag") + " " + p.getName() + ChatColor.YELLOW + " joined the game.");
 		}
 	}
 	
@@ -24,7 +31,7 @@ public class ColorOPListener implements Listener {
 	public void onPlayerQuit(PlayerQuitEvent e) {
 		Player p = e.getPlayer();
 		if(p.isOp()) {
-			e.setQuitMessage(ChatColor.RED + "[OP] " + p.getName() + ChatColor.YELLOW + " leaved the game.");
+			e.setQuitMessage(ChatColor.RED + "[OP] " + p.getName() + ChatColor.YELLOW + " left the game.");
 		}
 	}
 }
