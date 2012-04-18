@@ -1,7 +1,6 @@
 package me.DJdur.ColorOP.plugin;
 
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -17,15 +16,15 @@ public class ColorOPListener implements Listener {
 	public ColorOPListener(ColorOP main) {
 		plugin = main;
 	}
-	FileConfiguration config = plugin.getConfig();
+	
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		if(p.isOp()) {
-			p.setDisplayName(config.getString("Color").replaceAll("&([0-9a-fk-or])", "\u00A7$1") + config.getString("Tag") + " " + p.getName());
-			p.setPlayerListName(config.getString("Color").replaceAll("&([0-9a-fk-or])", "\u00A7$1") + p.getName());
-			e.setJoinMessage(config.getString("Color").replaceAll("&([0-9a-fk-or])", "\u00A7$1") + config.getString("Tag") + " " + p.getName() + ChatColor.YELLOW + " joined the game.");
+			p.setDisplayName(plugin.getConfig().getString("Color").replaceAll("&([0-9a-fk-or])", "\u00A7$1") + plugin.getConfig().getString("Tag") + " " + p.getName());
+			p.setPlayerListName(plugin.getConfig().getString("Color").replaceAll("&([0-9a-fk-or])", "\u00A7$1") + p.getName());
+			e.setJoinMessage(plugin.getConfig().getString("Color").replaceAll("&([0-9a-fk-or])", "\u00A7$1") + plugin.getConfig().getString("Tag") + " " + p.getName() + ChatColor.YELLOW + " joined the game.");
 		}
 	}
 	
@@ -33,7 +32,7 @@ public class ColorOPListener implements Listener {
 	public void onPlayerQuit(PlayerQuitEvent e) {
 		Player p = e.getPlayer();
 		if(p.isOp()) {
-			e.setQuitMessage(config.getString("Color").replaceAll("&([0-9a-fk-or])", "\u00A7$1") + config.getString("Tag") + " " + p.getName() + ChatColor.YELLOW + " left the game.");
+			e.setQuitMessage(plugin.getConfig().getString("Color").replaceAll("&([0-9a-fk-or])", "\u00A7$1") + plugin.getConfig().getString("Tag") + " " + p.getName() + ChatColor.YELLOW + " left the game.");
 		}
 	}
 }
